@@ -41,5 +41,7 @@ models:
     example:
       +materialized: table
   
-  
+    staging:
+      +schema: STAGING
+      +materialized: table
     
