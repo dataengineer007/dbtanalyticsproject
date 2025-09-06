@@ -1,7 +1,7 @@
-{{ config(materialized='ephemeral') }}
-
-with cte as 
-(
-    Select * from SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.CUSTOMER
+with source as (
+    select *
+    from {{ source('tpch_sf1', 'customer') }}
 )
-SELECT * FROM CTE
+
+select *
+from source

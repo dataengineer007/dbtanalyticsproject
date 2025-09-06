@@ -1,0 +1,56 @@
+version: 2
+
+sources:
+  - name: tpch_sf1
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: TPCH_SF1
+    tables:
+      - name: customer
+        description: "Customer master data from Snowflake TPCH sample dataset"
+        columns:
+          - name: c_custkey
+            description: "Primary key"
+            tests:
+              - not_null
+              - unique
+          - name: c_nationkey
+            description: "FK to nation"
+            tests:
+              - not_null
+
+models:
+  - name: stg_customer
+    description: "Staging model that cleans and standardizes the CUSTOMER source table from TPCH dataset."
+    columns:
+      - name: c_custkey
+        description: "Unique identifier for each customer"
+        tests:
+          - not_null
+          - unique
+      - name: C_NAME
+        description: "Customer full name"
+      - name: C_NATIONKEY
+        description: "Reference to nation dimension"
+      - name: C_ACCTBAL
+        description: "Customer’s account balance"
+      - name: C_MKTSEGMENT
+        description: "Market segment classification of the customer"
+
+  - name: Stg_nation_customer
+    description: '{{ doc("cust_nation") }}'
+    columns:
+      - name: c_custkey
+        description: "Unique identifier for each customer derived from stg_customer model"
+        tests:
+          - not_null
+          - unique
+      - name: C_NAME
+        description: "Customer full name"
+      - name: C_NATIONKEY
+        description: "Reference to nation dimension"
+      - name: N_NAME
+        description: "Nation name for associated customers derived from STG_NATION model"
+      - name: C_ACCTBAL
+        description: "Customer’s account balance"
+      - name: C_MKTSEGMENT
+        description: "Market segment classification of the customer"
