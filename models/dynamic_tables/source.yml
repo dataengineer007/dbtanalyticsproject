@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: pipeline_source
+    database: YOUTUBELEARNING
+    schema: PIPELINE
+    tables:
+      - name: ITEM
+        description: "Item master data from PIPELINE schema"
+      - name: STG_CUSTOMER
+        description: "Staging customer data from PIPELINE schema"
