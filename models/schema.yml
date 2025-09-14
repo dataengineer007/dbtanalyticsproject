@@ -20,37 +20,48 @@ sources:
 
 models:
   - name: stg_customer
-    description: "Staging model that cleans and standardizes the CUSTOMER source table from TPCH dataset."
+    description: '{{ doc("cust_nation") }}'
     columns:
       - name: c_custkey
         description: "Unique identifier for each customer"
         tests:
           - not_null
           - unique
-      - name: C_NAME
+      - name: c_name
         description: "Customer full name"
-      - name: C_NATIONKEY
+      - name: c_nationkey
         description: "Reference to nation dimension"
-      - name: C_ACCTBAL
-        description: "Customer’s account balance"
-      - name: C_MKTSEGMENT
+      - name: c_acctbal
+        description: "Customers account balance"
+      - name: c_mktsegment
         description: "Market segment classification of the customer"
 
   - name: Stg_nation_customer
-    description: '{{ doc("cust_nation") }}'
+    description: "{{ doc('cust_nation') }}"
     columns:
       - name: c_custkey
         description: "Unique identifier for each customer derived from stg_customer model"
         tests:
           - not_null
           - unique
-      - name: C_NAME
+      - name: c_name
         description: "Customer full name"
-      - name: C_NATIONKEY
+      - name: c_nationkey
         description: "Reference to nation dimension"
-      - name: N_NAME
-        description: "Nation name for associated customers derived from STG_NATION model"
-      - name: C_ACCTBAL
-        description: "Customer’s account balance"
-      - name: C_MKTSEGMENT
+      - name: n_name
+        description: "Nation name for associated customers derived from stg_nation model"
+      - name: c_acctbal
+        description: "Customers account balance"
+      - name: c_mktsegment
         description: "Market segment classification of the customer"
+
+  - name: stg_nation
+    description: "This is for nation model"
+    columns:
+      - name: n_nationkey
+        description: "Unique identifier for each nation derived from stg_nation"
+        tests:
+          - not_null
+          - unique
+      - name: n_name
+        description: "Country name"

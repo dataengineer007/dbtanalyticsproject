@@ -1,6 +1,8 @@
 {% docs cust_nation %}
 
-Nation wise customer and their associated details as follows:
+Staging model that cleans and standardizes the CUSTOMER source table from TPCH dataset.
+Nation wise customer with their associated market segment  as follows:
+
 
 | Market segment | description                                  |
 |----------------|----------------------------------------------|
