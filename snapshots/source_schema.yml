@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: raw
+    database: DBT_PRACTICE
+    schema: PUBLIC
+    tables:
+      - name: customers
+        description: 'This is for Stg_customer table'
+      - name: orders
+        description: 'this is for orders table'

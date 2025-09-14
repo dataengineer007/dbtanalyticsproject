@@ -20,4 +20,4 @@ select c.cust_id,         c.cust_name,         c.crid,         c.location,
   ON c.cust_id = I.cust_id
 
 )
-select * from CUST_ITEM_DT 
+select * from CUST_ITEM_DT  

@@ -45,7 +45,7 @@ models:
       +schema: STAGING
       +materialized: table
 
-    dynamic_tables:
-      +schema: CLEANSED
+    DYNAMICTABLE:
+      +schema: DYNAMIC
       +materialized: table
     

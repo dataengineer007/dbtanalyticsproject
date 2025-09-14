@@ -10,6 +10,6 @@ With ITEM_DT as
 SELECT *,
            ROW_NUMBER() OVER (PARTITION BY CUST_ID ORDER BY PRICE DESC) AS rn
     FROM 
-{{ source('pipeline_source', 'ITEM') }} 
+{{ source('RAWLAYER', 'ITEM') }} 
 )
 select * from ITEM_DT where rn=1

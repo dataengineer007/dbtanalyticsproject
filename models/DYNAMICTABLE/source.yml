@@ -1,0 +1,9 @@
+sources:
+  - name: RAWLAYER
+    database: YOUTUBELEARNING
+    schema: PIPELINE
+    tables:
+      - name: STG_CUSTOMER
+        description: "This is customer data coming from OLTP source"
+      - name: ITEM
+        description: "This is item data coming from OLTP source"
